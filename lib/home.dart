@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:github_app/profile_screen.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   final String title;
 
   const Home({Key key, this.title}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _controller = TextEditingController();
-    final GlobalKey<FormState> _formKey = GlobalKey();
+    // final GlobalKey<FormState> _formKey = GlobalKey();
     void submit() {
-      // if (_formKey.currentState.validate()) {
-      //   return;
-      // }
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => Profile(
@@ -23,10 +26,13 @@ class Home extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text(title),
+        backgroundColor: Colors.white,
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: Column(
         children: [
@@ -48,7 +54,7 @@ class Home extends StatelessWidget {
                 Text(
                   'GitHub',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 50,
                   ),
@@ -65,10 +71,10 @@ class Home extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.1),
+                      color: Colors.black,
                     ),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                       controller: _controller,
                       // ignore: missing_return
                       validator: (value) {
@@ -92,10 +98,10 @@ class Home extends StatelessWidget {
                 ),
                 Container(
                   height: 50,
-                  width: 100,
+                  width: 350,
                   child: FlatButton(
                     padding: EdgeInsets.all(10),
-                    color: Colors.blue,
+                    color: Colors.green,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
